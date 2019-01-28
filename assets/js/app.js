@@ -84,11 +84,12 @@ const trainArrival = (trainFirst, trainFrequency) => {
     let untilArrival = trainFrequency - remainingTime;
     let nextTrain = moment().add(untilArrival, "minutes");
     // console.log("Next train " + nextTrain);
-
-    let arrivalIn = moment(nextTrain).format("HH:mm");
+    let untilNextTrain = moment().to(nextTrain);
+    // let arrivalIn = moment(nextTrain).format("HH:mm");
+    let arrivalIn = moment(untilNextTrain).format("HH:mm");
     // console.log(arrivalIn);
 
-    return arrivalIn;
+    return untilNextTrain;
 };
 
 // console.log(trainArrival("01:33", "17"));
