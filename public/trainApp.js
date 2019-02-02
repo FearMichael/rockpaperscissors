@@ -179,7 +179,6 @@ const populateTrains = () => {
 
 const getData = () => {
     setTimeout(function() {
-        console.log("PING!");
         trainData.empty();
         getData();
         populateTrains();
