@@ -7,15 +7,14 @@ let now = moment();
 const trainData = $("#trainData");
 const currentTime = $("#currentTime");
 // let dropdownFilled = false;
-// var provider = new firebase.auth.GithubAuthProvider();
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyBqqVykbzogd6LI1YTGO6PmUbuH3VzsiZE",
-  authDomain: "traintracker-e3faf.firebaseapp.com",
-  databaseURL: "https://traintracker-e3faf.firebaseio.com",
-  projectId: "traintracker-e3faf",
-  storageBucket: "traintracker-e3faf.appspot.com",
-  messagingSenderId: "416740466914"
+    apiKey: "AIzaSyBqqVykbzogd6LI1YTGO6PmUbuH3VzsiZE",
+    authDomain: "traintracker-e3faf.firebaseapp.com",
+    databaseURL: "https://traintracker-e3faf.firebaseio.com",
+    projectId: "traintracker-e3faf",
+    storageBucket: "traintracker-e3faf.appspot.com",
+    messagingSenderId: "416740466914"
 };
 firebase.initializeApp(config);
 const database = firebase.database();
@@ -26,6 +25,7 @@ $(".select-dropdown").on("contentChanged", function(event) {
     $(this).formSelect();
 });
 
+var provider = new firebase.auth.GoogleAuthProvider();
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
