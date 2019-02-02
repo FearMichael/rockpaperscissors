@@ -72,9 +72,8 @@ var uiConfig = {
   //Signout option
   $("#signout").click(function(event) {
     firebase.auth().signOut();
+    M.toast({html: "You're now signed out", classes: "blue rounded", displayLength: 1000*4})
   });
-
-
 
 // var instance = M.Dropdown.getInstance();
 
@@ -120,20 +119,12 @@ updateTrainButton.click(function(event) {
 });
 
 const trainArrival = (trainFirst, trainFrequency) => {
-    // console.log(trainFirst, trainFrequency); //without the "Subtract a year" the time was off by a few minutes
+    //without the "Subtract a year" the time was off by a few minutes
     let start = moment(trainFirst, "HH:mm").subtract(1, "years");
-
-    let currentTime = moment();
-    // console.log("current time: " + moment(currentTime).format("hh:mm"));
-    // console.log("Tfrequency " + trainFrequency);
     let timeDiff = moment().diff(moment(start), "minutes");
-
-    // console.log("Time diff " + moment(timeDiff).format("HH:mm"));
     let remainingTime = timeDiff % trainFrequency;
-
     let untilArrival = trainFrequency - remainingTime;
     let nextTrain = moment().add(untilArrival, "minutes");
-    
     let untilNextTrain = moment().to(nextTrain);
     return untilNextTrain;
 };
@@ -143,15 +134,8 @@ const trainArrival = (trainFirst, trainFrequency) => {
 const timeToArrival = (trainFirst, trainFrequency) => {
     // console.log(trainFirst, trainFrequency); //without the "Subtract a year" the time was off by a few minutes
     let start = moment(trainFirst, "HH:mm").subtract(1, "years");
-
-    // console.log("current time: " + moment(currentTime).format("hh:mm"));
-    // console.log("Tfrequency " + trainFrequency);
     let timeDiff = moment().diff(moment(start), "minutes");
-
-    // console.log("Time diff " + moment(timeDiff).format("HH:mm"));
     let remainingTime = timeDiff % trainFrequency;
-
-    // console.log("Remaining time " + remainingTime);
     let untilArrival = trainFrequency - remainingTime;
     return untilArrival;
 };
