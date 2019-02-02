@@ -33,7 +33,7 @@ var uiConfig = {
           return redirectUrl;
           // Return type determines whether we continue the redirect automatically
           // or whether we leave that to developer to handle.
-          return true;
+        //   return true;
         },
         uiShown: function() {
           // The widget is rendered.
@@ -69,6 +69,14 @@ var uiConfig = {
   // The start method will wait until the DOM is loaded.
   ui.start('#firebaseui-auth-container', uiConfig);
 
+  //Signout option
+  $("#signout").click(function(event) {
+    firebase.auth().signOut().then(function() {
+        console.log('Signed Out');
+      }, function(error) {
+        console.error('Sign Out Error', error);
+      });
+  });
 
 
 
