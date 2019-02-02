@@ -6,13 +6,44 @@ let firstArrival;
 let now = moment();
 const trainData = $("#trainData");
 const currentTime = $("#currentTime");
-let dropdownFilled = false;
+// let dropdownFilled = false;
+// var provider = new firebase.auth.GithubAuthProvider();
 
 //initialize Materialize form
 M.AutoInit();
 $(".select-dropdown").on("contentChanged", function(event) {
     $(this).formSelect();
 });
+
+// var uiConfig = {
+//     signInSuccessUrl: '<url-to-redirect-to-on-success>',
+//     signInOptions: [
+//       // Leave the lines as is for the providers you want to offer your users.
+//     //   firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+//     //   firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+//     //   firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+//       firebase.auth.GithubAuthProvider.PROVIDER_ID,
+//     //   firebase.auth.EmailAuthProvider.PROVIDER_ID,
+//     //   firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+//     //   firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+//     ],
+//     // tosUrl and privacyPolicyUrl accept either url string or a callback
+//     // function.
+//     // Terms of service url/callback.
+//     tosUrl: '<your-tos-url>',
+//     // Privacy policy url/callback.
+//     privacyPolicyUrl: function() {
+//       window.location.assign('<your-privacy-policy-url>');
+//     }
+//   };
+
+//   // Initialize the FirebaseUI Widget using Firebase.
+//   var ui = new firebaseui.auth.AuthUI(firebase.auth());
+//   // The start method will wait until the DOM is loaded.
+//   ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
 
 // var instance = M.Dropdown.getInstance();
 
@@ -27,7 +58,7 @@ $(".select-dropdown").on("contentChanged", function(event) {
   };
   firebase.initializeApp(config);
   const database = firebase.database();
-
+  
 // $(document).on("click", ".select-dropdown", function(event) {
 //       console.log(event);
 //       if (dropdownFilled == false) {
@@ -80,15 +111,10 @@ const trainArrival = (trainFirst, trainFrequency) => {
     // console.log("Time diff " + moment(timeDiff).format("HH:mm"));
     let remainingTime = timeDiff % trainFrequency;
 
-    // console.log("Remaining time " + remainingTime);
     let untilArrival = trainFrequency - remainingTime;
     let nextTrain = moment().add(untilArrival, "minutes");
-    // console.log("Next train " + nextTrain);
+    
     let untilNextTrain = moment().to(nextTrain);
-    // let arrivalIn = moment(nextTrain).format("HH:mm");
-    let arrivalIn = moment(untilNextTrain).format("HH:mm");
-    // console.log(arrivalIn);
-
     return untilNextTrain;
 };
 
@@ -98,7 +124,6 @@ const timeToArrival = (trainFirst, trainFrequency) => {
     // console.log(trainFirst, trainFrequency); //without the "Subtract a year" the time was off by a few minutes
     let start = moment(trainFirst, "HH:mm").subtract(1, "years");
 
-    let currentTime = moment();
     // console.log("current time: " + moment(currentTime).format("hh:mm"));
     // console.log("Tfrequency " + trainFrequency);
     let timeDiff = moment().diff(moment(start), "minutes");
@@ -125,14 +150,12 @@ const populateTrains = () => {
         newRow.append(addTrainName, addDestination, addfrequency, addArrival, addMinutesAway);
         trainData.append(newRow);    
         });
-        
-        
-        
-    })
-}
+    });
+};
 
 const getData = () => {
     setTimeout(function() {
+        console.log("PING!");
         trainData.empty();
         getData();
         populateTrains();

@@ -7,8 +7,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel='stylesheet' type='text/css' media='screen' href='assets/css/style.css' />
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__en.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+<link rel='stylesheet' type='text/css' media='screen' href='trainStyle.css' />
 </head>
 <body>
 <div class="container white-text blue-grey padding-m center-align">
@@ -54,8 +57,8 @@
             <!-- <select id="frequency" placeholder="Trip frequency...">
                 <option value="" id="numberOfMinutes">Number of Minutes</option>
             </select> -->
-            <input placeholder="Train arrives how often" id="frequency" type="text" class="validate" maxlength="5">
-            <label for="frequency">Trip Frequency (mm:ss)</label>
+            <input placeholder="Train arrives how often" id="frequency" type="text" class="validate" maxlength="2">
+            <label for="frequency">Trip Frequency (mm)</label>
         </div>
         </div>
         <div class="row">
@@ -67,9 +70,8 @@
     </form>
     <button class="btn-large" id="updateTrains">Update Trains  <i class="medium material-icons">arrow_upward</i></button>
 </div>
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="trainApp.js"></script>
 </body>
 </html>
