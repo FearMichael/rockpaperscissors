@@ -125,7 +125,7 @@ const trainArrival = (trainFirst, trainFrequency) => {
     let timeDiff = moment().diff(moment(start), "minutes");
     let remainingTime = timeDiff % trainFrequency;
     let untilArrival = trainFrequency - remainingTime;
-    let nextTrain = moment().add(untilArrival, "minutes");
+    let nextTrain = moment().add(untilArrival, "HH:mm");
     // let untilNextTrain = moment().to(nextTrain);
     return nextTrain;
 };
