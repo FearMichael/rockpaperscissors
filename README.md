@@ -4,7 +4,7 @@ This is a basic mockup to utilize the following features:
 - MomentJS as a JS time library
 - Introduction into authentication, this may not be entirely smooth yet
 
-##Future Improvements
+## Future Improvements
 - Added signing in/out functionality including logo when you're logged in
 - Add more log in services
 
