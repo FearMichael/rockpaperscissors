@@ -4,10 +4,17 @@
 .margin-tm {
     margin-top: 2em;
 }
+.margin-tb {
+    margin: 2em 0;
+}
 .narrow {
     width: 50%;
 }
 
 .bold-text {
     font-weight: 700;
+}
+
+#signout {
+    display: none;
 }
