@@ -126,8 +126,8 @@ const trainArrival = (trainFirst, trainFrequency) => {
     let remainingTime = timeDiff % trainFrequency;
     let untilArrival = trainFrequency - remainingTime;
     let nextTrain = moment().add(untilArrival, "minutes");
-    let untilNextTrain = moment().to(nextTrain);
-    return untilNextTrain;
+    // let untilNextTrain = moment().to(nextTrain);
+    return nextTrain;
 };
 
 // console.log(trainArrival("01:33", "17"));
