@@ -73,7 +73,7 @@ var uiConfig = {
   $("#signout").click(function(event) {
     firebase.auth().signOut();
     M.toast({html: "You're now signed out", classes: "blue rounded", displayLength: 1000*4})
-    $("#signout").hide();
+    // $("#signout").hide();
   });
 
 // var instance = M.Dropdown.getInstance();
@@ -168,6 +168,9 @@ const getData = () => {
 getData();
 
 //Check if user is logged in and hide signout button if not
-if (firebase.auth().currentUser) {
-    $("#signout").show();
-}
+// $(document).ready(function() {
+//     if (firebase.auth().currentUser) {
+//         $("#signout").show();
+//     }
+
+// });
